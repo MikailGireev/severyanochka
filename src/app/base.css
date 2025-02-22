@@ -6,3 +6,46 @@
   font-family: 'Rubik', 'sans-serif';
   font-weight: 400;
 }
+
+:root {
+  /* main-color */
+  --main-background: #f4f4f2;
+  --main-background-text: #291e0f;
+  --main-surface: #ffffff;
+  --main-surface-text: #414141;
+  --main-primary: #ff6633;
+  --main-primary-text: #ffffff;
+  --main-secondary: #70c05b;
+  --main-secondary-text: #ffffff;
+
+  /* grayscale */
+  --grayscale-lightest: #f3f2f1;
+  --grayscale-light: #bfbfbf;
+  --grayscale-hard: #8f8f8f;
+  --grayscale-hardest: #606060;
+
+  /* palete */
+  --palete-success: #008c49;
+  --palete-info: #1cb9fc;
+  --palete-warning: #fca21c;
+  --palete-error: #d80000;
+
+  /* shadow */
+  --shadow-default-xs: 1px 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default-s: 2px 4px 8px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default-m: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default-l: 8px 16px 32px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default-xl: 16px 32px 64px 0 rgba(0, 0, 0, 0.1);
+
+  --shadow-primary-xs: 1px 2px 4px 0 rgba(255, 102, 51, 0.2);
+  --shadow-primary-s: 1px 2px 4px 0 rgba(255, 102, 51, 0.2);
+  --shadow-primary-m: 1px 2px 4px 0 rgba(255, 102, 51, 0.2);
+  --shadow-primary-l: 1px 2px 4px 0 rgba(255, 102, 51, 0.2);
+  --shadow-primary-xl: 1px 2px 4px 0 rgba(255, 102, 51, 0.2);
+
+  --shadow-secondary-xs: 1px 2px 4px 0 rgba(112, 192, 91, 0.2);
+  --shadow-secondary-s: 1px 2px 4px 0 rgba(112, 192, 91, 0.2);
+  --shadow-secondary-m: 1px 2px 4px 0 rgba(112, 192, 91, 0.2);
+  --shadow-secondary-l: 1px 2px 4px 0 rgba(112, 192, 91, 0.2);
+  --shadow-secondary-xl: 1px 2px 4px 0 rgba(112, 192, 91, 0.2);
+}
