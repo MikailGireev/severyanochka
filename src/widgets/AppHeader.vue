@@ -1,9 +1,28 @@
 <script setup lang="ts">
+import AppNavigation from '@/features/header/AppNavigation.vue';
+
+import UserMenu from '@/features/header/UserMenu.vue';
 import UiButton from '@/shared/ui/UiButton.vue';
 import UiContainer from '@/shared/ui/UiContainer.vue';
 import UiField from '@/shared/ui/UiField.vue';
 import UiIcon from '@/shared/ui/UiIcon.vue';
 import UiLogo from '@/shared/ui/UiLogo.vue';
+
+import { reactive } from 'vue';
+
+import avatarPng from '@/assets/avatar.png';
+
+const navItem = reactive([
+  { label: 'Избранное', icon: 'favorite', count: 0, link: '/favorites' },
+  { label: 'Заказы', icon: 'orders', count: 0, link: '/orders' },
+  { label: 'Корзина', icon: 'cart', count: 1, link: '/cart' },
+]);
+
+const userMenu = reactive({
+  avatar: avatarPng,
+  name: 'Алексей',
+  menu: [],
+});
 
 const onChangeSearch = (value: string) => {
   console.log(value);
@@ -64,6 +83,12 @@ const onSearch = () => console.log('SEND');
           </template>
         </UiField>
       </div>
+      <div class="header__navigation">
+        <AppNavigation :data="navItem" />
+      </div>
+      <div class="header__user-menu">
+        <UserMenu :data="userMenu" />
+      </div>
     </UiContainer>
   </header>
 </template>
@@ -91,5 +116,14 @@ const onSearch = () => console.log('SEND');
 .header__search {
   width: 374px;
   margin-left: 16px;
+}
+
+.header__navigation {
+  margin-left: 40px;
+}
+
+.header__user-menu {
+  margin-left: 24px;
+  width: 217px;
 }
 </style>

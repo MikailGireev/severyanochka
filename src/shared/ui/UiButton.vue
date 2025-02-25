@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlots } from 'vue';
 import type { Props } from '../types/button';
 import UiTypography from './UiTypography.vue';
 
@@ -9,13 +10,17 @@ const {
   disabled = false,
 } = defineProps<Props>();
 
+const slots = useSlots();
+
 const classes = ['button', `color_${color}`, `size_${size}`, `decoration_${decoration}`];
 </script>
 
 <template>
   <button :class="classes" :disabled="disabled">
     <slot name="left-icon"></slot>
-    <UiTypography class="button__text" tag-name="p" size="s"><slot></slot></UiTypography>
+    <UiTypography v-if="slots.default" class="button__text" tag-name="p" size="s"
+      ><slot></slot
+    ></UiTypography>
   </button>
 </template>
 
@@ -42,5 +47,14 @@ const classes = ['button', `color_${color}`, `size_${size}`, `decoration_${decor
 .button__text {
   width: 100%;
   text-align: center;
+}
+
+.button.decoration_none {
+  background-color: unset;
+  color: unset;
+}
+
+.button.decoration_none:deep(path) {
+  fill: var(--main-surface-text);
 }
 </style>

@@ -7,6 +7,11 @@
   font-weight: 400;
 }
 
+ul,
+ol {
+  list-style: none;
+}
+
 :root {
   /* main-color */
   --main-background: #f4f4f2;
