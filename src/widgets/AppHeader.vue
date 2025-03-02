@@ -10,7 +10,13 @@ import UiLogo from '@/shared/ui/UiLogo.vue';
 
 import { reactive } from 'vue';
 
+const personStore = usePersonStore();
+const { person, isAuth } = storeToRefs(personStore);
+const { setAuth } = personStore;
+
 import avatarPng from '@/assets/avatar.png';
+import { usePersonStore } from '@/entities/person/model/store';
+import { storeToRefs } from 'pinia';
 
 const navItem = reactive([
   { label: 'Избранное', icon: 'favorite', count: 0, link: '/favorites' },
@@ -20,8 +26,11 @@ const navItem = reactive([
 
 const userMenu = reactive({
   avatar: avatarPng,
-  name: 'Алексей',
-  menu: [],
+  name: person.value.name,
+  menu: [
+    { label: 'Профиль', link: '/profile' },
+    { label: 'Выход', action: 'logout' },
+  ],
 });
 
 const onChangeSearch = (value: string) => {
@@ -29,6 +38,7 @@ const onChangeSearch = (value: string) => {
 };
 
 const onSearch = () => console.log('SEND');
+const onLogin = () => setAuth(true);
 </script>
 
 <template>
@@ -87,7 +97,13 @@ const onSearch = () => console.log('SEND');
         <AppNavigation :data="navItem" />
       </div>
       <div class="header__user-menu">
-        <UserMenu :data="userMenu" />
+        <UserMenu v-if="isAuth" :data="userMenu" />
+        <UiButton @click="onLogin" class="header__login-user" v-else color="primary">
+          <template v-slot:right-icon>
+            <UiIcon type="login" />
+          </template>
+          Войти
+        </UiButton>
       </div>
     </UiContainer>
   </header>
@@ -123,7 +139,18 @@ const onSearch = () => console.log('SEND');
 }
 
 .header__user-menu {
+  position: relative;
   margin-left: 24px;
   width: 217px;
+}
+
+.header__login-user {
+  width: 157px;
+}
+
+.header__user-menu:deep(.user-menu) {
+  position: absolute;
+  top: -28px;
+  left: 0;
 }
 </style>

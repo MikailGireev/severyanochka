@@ -1,0 +1,1 @@
+import { usePersonStore } from './store';

@@ -13,9 +13,10 @@ defineProps<Props>();
 </template>
 
 <style scoped>
-.size_typography {
+.typography {
   font-style: normal;
   line-height: 150%;
+  color: var(--main-surface-text);
 }
 
 .bold {

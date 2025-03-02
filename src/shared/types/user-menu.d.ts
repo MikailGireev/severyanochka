@@ -1,7 +1,13 @@
+interface Menu {
+  label?: string;
+  link?: string;
+  action?: string;
+}
+
 interface Data {
   avatar: string;
   name?: string;
-  menu?: null[];
+  menu?: Menu[];
 }
 
 export interface Props {
