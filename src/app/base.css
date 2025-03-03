@@ -12,6 +12,11 @@ ol {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: unset;
+}
+
 :root {
   /* main-color */
   --main-background: #f4f4f2;
