@@ -1,6 +1,10 @@
+interface CatalogStore {
+  sections: CatalogSection[];
+}
+
 interface CatalogSection {
   label: string;
   link: string;
 }
 
-export { type CatalogSection };
+export { type CatalogSection, type CatalogStore };

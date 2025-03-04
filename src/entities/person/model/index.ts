@@ -1,1 +1,1 @@
-import { usePersonStore } from './store';
+export { usePersonStore } from './store';

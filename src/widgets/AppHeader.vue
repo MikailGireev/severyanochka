@@ -128,14 +128,16 @@ const toggleDropdownVisibility = () => (dropdownIsHiden.value = !dropdownIsHiden
 .header__container {
   display: flex;
   align-items: center;
+  background: var(--main-surface);
   height: 72px;
 }
 
 .header {
   position: sticky;
+  background: var(--main-surface);
   top: 0;
   left: 0;
-  background: var(--main-surface);
+  z-index: 5;
 }
 
 .header__content {

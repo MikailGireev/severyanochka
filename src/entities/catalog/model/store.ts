@@ -1,26 +1,29 @@
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { defineStore } from 'pinia';
+import type { CatalogSection, CatalogStore } from './types';
 
-export const useCatalogStore = defineStore('counter', () => {
-  const catalog = reactive({
+export const useCatalogStore = defineStore('catalog', () => {
+  const catalog = reactive<CatalogStore>({
     sections: [
-      { label: 'Молоко, сыр, яйцо', link: '/' },
-      { label: 'Напитки', link: '/' },
-      { label: 'Бакалея', link: '/' },
-      { label: 'Непродовольственные товары', link: '/' },
-      { label: 'Хлеб', link: '/' },
-      { label: 'Кондитерские изделия', link: '/' },
-      { label: 'Здоровое питание', link: '/' },
-      { label: 'Детское питание', link: '/' },
-      { label: 'Фрукты и овощи', link: '/' },
-      { label: 'Чай, кофе', link: '/' },
-      { label: 'Зоотовары', link: '/' },
-      { label: 'Мясо, птица, колбаса', link: '/' },
-      { label: 'Замороженные продукты', link: '/' },
+      { label: 'Молоко, сыр, яйцо', link: '/section' },
+      { label: 'Напитки', link: '/section' },
+      { label: 'Бакалея', link: '/section' },
+      { label: 'Непродовольственные товары', link: '/section' },
+      { label: 'Хлеб', link: '/section' },
+      { label: 'Кондитерские изделия', link: '/section' },
+      { label: 'Здоровое питание', link: '/section' },
+      { label: 'Детское питание', link: '/section' },
+      { label: 'Фрукты и овощи', link: '/section' },
+      { label: 'Чай, кофе', link: '/section' },
+      { label: 'Зоотовары', link: '/section' },
+      { label: 'Мясо, птица, колбаса', link: '/section' },
+      { label: 'Замороженные продукты', link: '/section' },
     ],
   });
 
-  const setCatalogSections = ()
+  const catalogSections = computed(() => catalog.sections);
 
-  return {};
+  const setCatalogSections = (sections: CatalogSection[]) => (catalog.sections = sections);
+
+  return { setCatalogSections, catalogSections };
 });
