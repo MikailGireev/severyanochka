@@ -14,10 +14,13 @@ import avatarPng from '@/assets/avatar.png';
 import { usePersonStore } from '@/entities/person/model/store';
 import { storeToRefs } from 'pinia';
 import DropdownMenu from '@/features/header/DropdownMenu.vue';
+import { useScreenStore } from '@/entities/screen';
 
 const personStore = usePersonStore();
 const { person, isAuth } = storeToRefs(personStore);
 const { setAuth } = personStore;
+const screenStore = useScreenStore();
+const { platform } = storeToRefs(screenStore);
 
 const navItem = reactive([
   { label: 'Избранное', icon: 'favorite', count: 0, link: '/favorites' },
@@ -27,7 +30,7 @@ const navItem = reactive([
 
 const userMenu = reactive({
   avatar: avatarPng,
-  name: person.value.name,
+  name: person.value.name || 'Guest',
   menu: [
     { label: 'Профиль', link: '/profile' },
     { label: 'Выход', action: 'logout' },
@@ -49,7 +52,7 @@ const toggleDropdownVisibility = () => (dropdownIsHiden.value = !dropdownIsHiden
   <header class="header">
     <div class="header__content">
       <UiContainer class="header__container">
-        <UiLogo orientation="horizontal" bg-color="white" colorful with-text />
+        <UiLogo orientation="horizontal" bg-color="white" colorful />
         <div class="header__catalog">
           <UiButton color="secondary" @mouseenter="toggleDropdownVisibility">
             <template v-slot:left-icon>
@@ -174,5 +177,32 @@ const toggleDropdownVisibility = () => (dropdownIsHiden.value = !dropdownIsHiden
   position: absolute;
   top: -28px;
   left: 0;
+}
+
+@media screen and (max-width: 1207px) {
+  .header__catalog {
+    width: unset;
+    margin-left: 20px;
+  }
+
+  .header__catalog:deep(.typography) {
+    display: none;
+  }
+
+  .header__catalog:deep(button) {
+    width: max-content;
+  }
+
+  .header__search {
+    margin-left: 20px;
+  }
+
+  .header__navigation {
+    margin-left: 20px;
+  }
+
+  .header__user-menu:deep(.user-menu) {
+    width: max-content;
+  }
 }
 </style>

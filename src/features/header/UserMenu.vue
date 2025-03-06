@@ -88,4 +88,19 @@ const onClickItem = (action: string) => {
   cursor: pointer;
   user-select: none;
 }
+
+@media screen and (max-width: 1207px) {
+  .user-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .user-menu__list {
+    grid-column: unset;
+  }
+
+  .user-menu__name,
+  .user-menu__button {
+    display: none;
+  }
+}
 </style>
