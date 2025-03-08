@@ -52,7 +52,14 @@ const toggleDropdownVisibility = () => (dropdownIsHiden.value = !dropdownIsHiden
   <header class="header">
     <div class="header__content">
       <UiContainer class="header__container">
-        <UiLogo orientation="horizontal" bg-color="white" colorful />
+        <router-link to="/">
+          <UiLogo
+            orientation="horizontal"
+            bg-color="white"
+            colorful
+            :with-text="platform === 'desktop'"
+          />
+        </router-link>
         <div class="header__catalog">
           <UiButton color="secondary" @mouseenter="toggleDropdownVisibility">
             <template v-slot:left-icon>
@@ -180,11 +187,20 @@ const toggleDropdownVisibility = () => (dropdownIsHiden.value = !dropdownIsHiden
 }
 
 @media screen and (max-width: 1207px) {
-  .header__catalog {
-    width: unset;
-    margin-left: 20px;
+  .header__container {
+    gap: 20px;
   }
 
+  .header__catalog {
+    width: unset;
+    margin: 0;
+  }
+
+  .header__login-user {
+    width: max-content;
+  }
+
+  .header__login-user:deep(.typography),
   .header__catalog:deep(.typography) {
     display: none;
   }
@@ -194,15 +210,23 @@ const toggleDropdownVisibility = () => (dropdownIsHiden.value = !dropdownIsHiden
   }
 
   .header__search {
-    margin-left: 20px;
+    width: 100%;
   }
 
   .header__navigation {
-    margin-left: 20px;
+    margin: 0;
   }
 
   .header__user-menu:deep(.user-menu) {
     width: max-content;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__catalog,
+  .header__navigation,
+  .header__user-menu {
+    display: none;
   }
 }
 </style>

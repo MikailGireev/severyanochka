@@ -11,6 +11,7 @@ const onRisize = () => {
 };
 
 onMounted(() => {
+  setPlatform(window.innerWidth);
   window.addEventListener('resize', onRisize);
 });
 

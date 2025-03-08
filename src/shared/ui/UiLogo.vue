@@ -1,11 +1,32 @@
 <script setup lang="ts">
+import { computed, toRefs } from 'vue';
 import type { Props } from '../types/logo';
 
-const { orientation, bgColor, colorful, withText } = defineProps<Props>();
+const props = defineProps<Props>();
 
-const option_1 = colorful && withText && orientation === 'vertical' && bgColor === 'white';
-const option_2 = colorful && withText && orientation === 'horizontal' && bgColor === 'white';
-const option_3 = colorful && !withText && orientation === 'horizontal' && bgColor === 'white';
+const { orientation, bgColor, colorful, withText } = toRefs(props);
+
+const option_1 = computed(
+  () =>
+    colorful.value &&
+    withText.value &&
+    orientation.value === 'vertical' &&
+    bgColor.value === 'white',
+);
+const option_2 = computed(
+  () =>
+    colorful.value &&
+    withText.value &&
+    orientation.value === 'horizontal' &&
+    bgColor.value === 'white',
+);
+const option_3 = computed(
+  () =>
+    colorful.value &&
+    !withText.value &&
+    orientation.value === 'horizontal' &&
+    bgColor.value === 'white',
+);
 </script>
 
 <template>
