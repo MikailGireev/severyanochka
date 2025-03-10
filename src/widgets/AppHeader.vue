@@ -10,7 +10,6 @@ import UiLogo from '@/shared/ui/UiLogo.vue';
 
 import { reactive, ref } from 'vue';
 
-import avatarPng from '@/assets/avatar.png';
 import { usePersonStore } from '@/entities/person/model/store';
 import { storeToRefs } from 'pinia';
 import DropdownMenu from '@/features/header/DropdownMenu.vue';
@@ -29,7 +28,7 @@ const navItem = reactive([
 ]);
 
 const userMenu = reactive({
-  avatar: avatarPng,
+  avatar: person.value.avatar,
   name: person.value.name || 'Guest',
   menu: [
     { label: 'Профиль', link: '/profile' },
